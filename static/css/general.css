@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+/* general styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins';
+    color: #494949;
+    background-color: #fcfbf6;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Merriweather';
+    color: #494949;
+}
+
+/* header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+    background-color: #E0DDD6;
+    font-size: 80%;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0, 0,0 , 0.06);
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+/* icon bar */
+
+#iconbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#iconbar li{
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+#iconbar li a{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
+}
+
+#iconbar li a:hover,
+#iconbar li a.active {
+    color: #7c482a;
+    
+}
+
+/*underline for selected element*/
+#iconbar li a.active::after,
+#iconbar li a:hover::after{
+    content: "";
+    left: 0;
+    width: 30%;
+    height: 2px;
+    background-color: #7c482a;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+}
+
+/* wrapper */
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 60vh;
+
+    width: 95%;
+    min-width:1600px;
+    background-color: #e0ddd6;
+    margin: 1% auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#wrapper h2 {
+  color: #532e28;
+}
+
+/* marquee styling */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+    margin-bottom: 15px;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    height: 50px;
+    padding: 5px;
+}
+
+.marquee {
+    position: absolute;
+    white-space: nowrap;
+    display: inline-block;
+    animation: scrollLeft 15s linear infinite;
+    font-family: 'Poppins';
+    color: #494949;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    left: 5%;
+}
+
+@keyframes scrollLeft {
+    to {
+        left: -50%;
+    }
+}
+
+/* footer */
+footer {
+    display: flex;
+    z-index: 1;
+    margin-top: 20px;
+}

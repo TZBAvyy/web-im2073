@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+#heroArea {
+    display: flex;
+    justify-content:flex-start;
+}
+
+#heroArea h2 {
+    font-family: Merriweather;
+    font-size: 62px;
+    color: #494949;
+    letter-spacing: 2px;
+    padding: 25px 0px 25px 50px;
+    align-items: center;
+}
+
+.catBox {
+    background-image: url("../asset/petShopBackground.png");
+    background-size: px;
+    width: 100%;
+    height: 750px;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.catObject {
+    position: absolute;
+    top: 70%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+}

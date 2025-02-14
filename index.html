@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+<title>The Cat Meme Shop - Home page</title>
+<link rel="stylesheet" href="static/css/general.css">
+<link rel="stylesheet" href="static/css/home.css">
+<script src="https://kit.fontawesome.com/e617f52b14.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <div id="logo">
+            <h1>The Cat Meme Shop</h1>
+        </div>
+
+        <div>
+            <ul id="iconbar">
+                <li><a href="/ebookshop/"><i class="fa-regular fa-heart"></i></a></li>
+                <li><a href="/ebookshop/"><i class="fa-solid fa-box"></i></a></li>
+                <li><a href="/ebookshop/"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href="/ebookshop/"><i class="fa-solid fa-user"></i></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div id="wrapper">
+         <!-- Home Page Hero Area -->
+        <div id="heroArea">
+                <div id="ad">
+                    <h2>the Purr-fect place <br> for Cat Meme Lovers</h2>
+                    </div>
+                <div id="trolley">
+                    <img src="static/asset/trolley.png" alt="Trolley" style="width: 250px; height: auto; padding-top: 10px;">
+                </div>
+        </div>
+
+        <!-- Drag and Drop Marquee -->
+        <div class="marquee-container">
+            <div class="marquee">
+                DRAG AND DROP YOUR FAVOURITE CAT INTO THE SHOPPING CART &emsp; &emsp;
+                DRAG AND DROP YOUR FAVOURITE CAT INTO THE SHOPPING CART &emsp; &emsp; 
+                DRAG AND DROP YOUR FAVOURITE CAT INTO THE SHOPPING CART
+            </div>
+        </div>
+
+        <!-- Cat Moving Area -->
+        <div class="catBox">
+            <div class="catObject" id="movingCat"><img src="static/asset/politeCat.png" alt="happyCat" style="width: 200px; height: auto;"></div>
+        </div>
+
+        <script>
+            const obj = document.document.querySelector(".catObject");
+            const container = document.querySelector(".catBox");
+
+            function moveRandom() {
+                const maxX = container.clientWidth - obj.clientWidth;
+                const maxY = container.clientHeight - obj.clientHeight;
+
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+
+                object.style.transition = "top 0.5s linear, left 0.5s linear";
+                obj.style.left = `${randomX}px`;
+                obj.style.top = `${randomY}px`;
+            }
+
+            setInterval(moveRandom, 1000);
+        </script>
+
+        <!-- Best Seller Slider -->
+        <!-- <div id="best-seller">
+            <div id="best-seller-left">
+                <h2>Best Sellers</h2>
+                <hr><br>
+                <p>Explore our best-selling products loved by customers. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus illo velit inventore minima aliquam placeat, molestias eligendi maxime non in pariatur! Architecto eum doloribus dolore pariatur, quo ab voluptate nam placeat ad et molestiae reprehenderit velit voluptatibus cumque obcaecati? Laborum.</p>
+                <div id="products">
+                <?php
+                    $db = new mysqli('localhost', 'root', '', 'myStyleLoft');
+                    
+                    if (mysqli_connect_errno()) {
+                        echo "Error: Could not connect to the database. Please try again later.";
+                        exit;
+                    }
+
+                    $query = "SELECT * FROM products WHERE productId IN (1, 21, 50)";
+                    $result = $db->query($query);
+
+                    if ($result->num_rows > 0) {
+                        while($product = $result->fetch_assoc()){
+                            echo '<div class="productcard">';
+                            echo '<img src="' . htmlspecialchars($product["productImage"]) . '" alt="' . htmlspecialchars($product["productName"]) . '">';
+                            echo '<div class="description">';
+                            echo '<h3>' . htmlspecialchars($product["productName"]) . '</h3>';
+                            echo '<p>' . htmlspecialchars($product["descrip"]) . '</p>';
+                            echo '</div>';
+                            echo '<h4>$' . number_format($product["price"], 2) . '</h4>';
+                            echo '<a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>';
+                            echo '</div>';
+                        }
+                    } else {
+                        echo "<p>No Products available</p>";
+                    }
+
+                    $db->close();
+                ?>
+                </div>
+                <button><a href="mens.php">View More</a></button>
+            </div>
+        </div>
+    </div> -->
+
+    <footer>
+        <div class="marquee-container">
+            <div class="marquee">
+                DEVELOPED BY AVISENA GIBRALTAR AND SEAW ZHI YI &emsp; &emsp;
+                DEVELOPED BY AVISENA GIBRALTAR AND SEAW ZHI YI &emsp; &emsp; 
+                DEVELOPED BY AVISENA GIBRALTAR AND SEAW ZHI YI
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+</html>
