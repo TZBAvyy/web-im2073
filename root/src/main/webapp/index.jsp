@@ -5,25 +5,6 @@
 	<jsp:attribute name="head">
 		<title>The Cat Meme Shop - Home page</title>	
 		<link rel="stylesheet" href="static/css/home.css">
-
-		<script>
-            const obj = document.document.querySelector(".catObject");
-            const container = document.querySelector(".catBox");
-
-            function moveRandom() {
-                const maxX = container.clientWidth - obj.clientWidth;
-                const maxY = container.clientHeight - obj.clientHeight;
-
-                const randomX = Math.random() * maxX;
-                const randomY = Math.random() * maxY;
-
-                object.style.transition = "top 0.5s linear, left 0.5s linear";
-                obj.style.left = `${randomX}px`;
-                obj.style.top = `${randomY}px`;
-            }
-
-            setInterval(moveRandom, 1000);
-        </script>
     </jsp:attribute>
 
 	<jsp:body>
@@ -47,7 +28,7 @@
 
         <!-- Cat Moving Area -->
         <div class="catBox">
-            <div class="catObject" id="movingCat"><img src="static/asset/politeCat.png" alt="happyCat" style="width: 200px; height: auto;"></div>
+            
         </div>
 	</jsp:body>
 </t:base>
