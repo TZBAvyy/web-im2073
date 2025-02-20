@@ -15,15 +15,15 @@
     <%-- BASE HEADER COMPONENT --%>
     <header>
         <div id="logo">
-            <h1>The Cat Meme Shop</h1>
+            <h1><a href="/">The Cat Meme Shop</a></h1>
         </div>
 
         <div>
             <ul id="iconbar">
-                <li><a href="/ebookshop/"><i class="fa-regular fa-heart"></i></a></li>
-                <li><a href="/ebookshop/"><i class="fa-solid fa-box"></i></a></li>
-                <li><a href="/ebookshop/"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                <li><a href="/ebookshop/"><i class="fa-solid fa-user"></i></a></li>
+                <li><a href="/"><i class="fa-regular fa-heart"></i></a></li>
+                <li><a href="/list.jsp"><i class="fa-solid fa-box"></i></a></li>
+                <li><a href="/"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href="/"><i class="fa-solid fa-user"></i></a></li>
             </ul>
         </div>
     </header>

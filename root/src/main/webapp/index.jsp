@@ -9,12 +9,12 @@
 
 	<jsp:body>
 		<div id="heroArea">
-                <div id="ad">
-                    <h2>the Purr-fect place <br> for Cat Meme Lovers</h2>
-                    </div>
-                <div id="trolley">
-                    <img src="static/asset/trolley.png" alt="Trolley" style="width: 250px; height: auto; padding-top: 10px;">
-                </div>
+            <div id="ad">
+                <h2>the Purr-fect place <br> for Cat Meme Lovers</h2>
+            </div>
+            <div id="trolley">
+                <img src="static/asset/trolley.png" alt="Trolley" style="width: 250px; height: auto; padding-top: 10px;">
+            </div>
         </div>
 
         <!-- Drag and Drop Marquee -->
