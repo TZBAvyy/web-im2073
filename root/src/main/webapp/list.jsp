@@ -16,9 +16,7 @@
 
         <!-- Cat Moving Area -->
         <div class="catBox">
-            <div class="catObject" id="movingCat">
-                <t:catobjects/>
-            </div>
+            <t:catobjects/>
         </div>
 	</jsp:body>
 </t:base>

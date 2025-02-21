@@ -29,5 +29,7 @@
     display: flex;
 }
 
-.catObject {
+.catObject p{
+    background: var(--background-color);
+    color: black;
 }

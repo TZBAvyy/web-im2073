@@ -1,6 +1,6 @@
 import java.io.*;
 import java.sql.*;
-import java.util.LinkedList;
+import java.util.Arrays;
 
 import jakarta.servlet.*;            // Tomcat 10 (Jakarta EE 9)
 import jakarta.servlet.http.*;
@@ -17,6 +17,7 @@ public class QueryServlet extends HttpServlet {
    public void doGet(HttpServletRequest request, HttpServletResponse response)
                throws ServletException, IOException {
       String[][] result = new String[100][4];
+      int memeCount = 0;
       try (
          // Step 1: Allocate a database 'Connection' object
          Connection conn = DriverManager.getConnection(
@@ -37,17 +38,16 @@ public class QueryServlet extends HttpServlet {
 
          // Step 4: Process the query result set
          
-         int count = 0;
          while(resultSet.next()) {
             String[] meme = new String[4];
-            meme[0] = resultSet.getString(1);
-            meme[1] = resultSet.getString(2);
-            meme[2] = resultSet.getDouble(3)+"";
-            meme[3] = resultSet.getString(4);
+            meme[0] = resultSet.getString(1);   // Name
+            meme[1] = resultSet.getString(2);   // Type
+            meme[2] = resultSet.getDouble(3)+"";// Price
+            meme[3] = resultSet.getString(4);   // Image Link
 
-            System.out.println(meme); 
-            result[count] = meme;
-            count++;
+            System.out.println(meme[0] + ", " + meme[1] + ", " + meme[2] + ", " + meme[3]); 
+            result[memeCount] = meme;
+            memeCount++;
          }
 
       } catch(SQLException ex) {
@@ -55,7 +55,7 @@ public class QueryServlet extends HttpServlet {
       }  // Step 5: Close conn and stmt - Done automatically by try-with-resources (JDK 7)
  
       // Renders jsp page
-      request.setAttribute("result", result);
+      request.setAttribute("result", Arrays.copyOfRange(result, 0, memeCount));
       request.getRequestDispatcher("/list.jsp").include(request, response);
    }
 }
