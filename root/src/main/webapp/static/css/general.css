@@ -101,6 +101,20 @@ header {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+#heroArea {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+#heroArea h2 {
+    font-family: Merriweather;
+    font-size: 62px;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+    padding: 25px 0;
+}
+
 /* marquee styling */
 .marquee-container {
     width: 100%;
