@@ -17,7 +17,6 @@
         <!-- Cat Moving Area -->
         <div class="catBox">
             <div class="catObject" id="movingCat">
-                <img src="static/asset/politeCat.png" alt="happyCat" style="width: 200px; height: auto;">
                 <t:catobjects/>
             </div>
         </div>
