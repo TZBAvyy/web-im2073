@@ -16,6 +16,7 @@
 
         <form action="/logout" method="post" class="form-container">
             <input type="submit" value="Yes, logout">
+            <a href="/">Cancel</a>
         </form>
 	</jsp:body>
 </t:base>

@@ -1,5 +1,4 @@
 import java.io.*;
-import java.sql.*;
 
 import jakarta.servlet.*;            // Tomcat 10 (Jakarta EE 9)
 import jakarta.servlet.http.*;
