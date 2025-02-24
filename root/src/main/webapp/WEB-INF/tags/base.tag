@@ -18,12 +18,23 @@
             <h1><a href="/">The Cat Meme Shop</a></h1>
         </div>
 
+        <%
+        String[] accInfo = (String[])request.getSession().getAttribute("accInfo");
+        if (accInfo != null) {
+            out.println("<div><h2>Logged in as: " + accInfo[0] + "</h2></div>");
+        }
+        %>
+
         <div>
             <ul id="iconbar">
                 <li><a href="/"><i class="fa-regular fa-heart"></i></a></li>
                 <li><a href="/list"><i class="fa-solid fa-box"></i></a></li>
                 <li><a href="/"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                <li><a href="/login"><i class="fa-solid fa-user"></i></a></li>
+                <li>
+                    <a href=<% if (accInfo==null) out.println("/login"); else out.println("/logout"); %>>
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                </li>
             </ul>
         </div>
     </header>

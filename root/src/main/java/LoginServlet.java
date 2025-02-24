@@ -9,14 +9,19 @@ import jakarta.servlet.annotation.*;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/login.jsp").include(req, resp);        
+        if (req.getSession().getAttribute("accInfo")==null) {
+            req.getRequestDispatcher("/login.jsp").include(req, resp);
+        } else {
+            resp.sendRedirect("/");
+        }        
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        String[] accountInformation = new String[4];
+        String[] accountInformation = new String[3];
+        String password_DB = null;
 
         try (
             Connection conn = DriverManager.getConnection(
@@ -31,10 +36,11 @@ public class LoginServlet extends HttpServlet {
             if (resultSet.next()) {
                 accountInformation[0] = resultSet.getString(1);   // Name
                 accountInformation[1] = resultSet.getString(2);   // Address
-                accountInformation[2] = resultSet.getString(3);   // Hashed PW
-                accountInformation[3] = resultSet.getInt(4)+"";   // Phone Number
+                password_DB = resultSet.getString(3);             // Hashed PW
+                accountInformation[2] = resultSet.getInt(4)+"";   // Phone Number
 
-                System.out.println(accountInformation[0] + ", " + accountInformation[1] + ", " + accountInformation[2] + ", " + accountInformation[3]); 
+                System.out.println(password_DB + "vs" + password);
+                System.out.println(accountInformation[0] + ", " + accountInformation[1] + ", " + accountInformation[2]); 
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -45,10 +51,10 @@ public class LoginServlet extends HttpServlet {
             req.setAttribute("error", "No such account found.");
             req.getRequestDispatcher("/login.jsp").include(req, resp);
 
-        } else if (checkPassword(password, accountInformation[2])) {
+        } else if (checkPassword(password, password_DB)) {
             System.out.println("Login successful.");
-            req.setAttribute("result", accountInformation);
-            req.getRequestDispatcher("/").include(req, resp);
+            req.getSession().setAttribute("accInfo", accountInformation);
+            resp.sendRedirect("/");
 
         } else {
             System.out.println("Incorrect password.");
