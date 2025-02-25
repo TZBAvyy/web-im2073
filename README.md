@@ -11,5 +11,3 @@ Web Mini-Project Repository for NTU IM2073: Intro to Design &amp; Project
 
 ### PreparedStatements & Preventing SQL injections
 > https://stackoverflow.com/questions/1812891/java-escape-string-to-prevent-sql-injection
-
-TESSTs
