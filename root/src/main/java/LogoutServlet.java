@@ -8,17 +8,11 @@ import jakarta.servlet.annotation.*;
 public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("\nGET Request to /logout");
         if (req.getSession().getAttribute("accInfo")!=null) {
-            req.getRequestDispatcher("/logout.jsp").include(req, resp);
-        } else {
-            resp.sendRedirect("/");
-        }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().invalidate();
+            req.getSession().invalidate();
+            System.out.println("Session invalidated/cleared. User logged out.");
+        } 
         resp.sendRedirect("/");
     }
-    
 }
