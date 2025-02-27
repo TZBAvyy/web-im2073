@@ -9,6 +9,26 @@ import jakarta.servlet.annotation.*;
 @WebServlet("/list")   // Configure the request URL for this servlet (Tomcat 7/Servlet 3.0 upwards)
 public class ListAllMemeServlet extends HttpServlet {
 
+   public class Meme {
+      String name;
+      String type;
+      double price;
+      String imagelink;
+
+      public String getImagelink() {
+          return imagelink;
+      }
+      public String getName() {
+          return name;
+      }
+      public double getPrice() {
+          return price;
+      }
+      public String getType() {
+          return type;
+      }
+   }
+
    // The doGet() runs once per HTTP GET request to this servlet.
    @Override
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,18 +54,17 @@ public class ListAllMemeServlet extends HttpServlet {
          ResultSet resultSet = stmt.executeQuery(sqlStatement);  // Send the query to the server
 
          // Step 4: Process the query result set
-         String[][] result = new String[100][4];
+         Meme[] result = new Meme[100];  // Assume we have less than 100 memes
          int memeCount = 0;
          while(resultSet.next()) {
-            String[] meme = new String[4];
-            meme[0] = resultSet.getString(1);   // Name
-            meme[1] = resultSet.getString(2);   // Type
-            meme[2] = resultSet.getDouble(3)+"";// Price
-            meme[3] = resultSet.getString(4);   // Image Link
+            Meme meme = new Meme();
+            meme.name = resultSet.getString(1);
+            meme.type = resultSet.getString(2);
+            meme.price = resultSet.getDouble(3);
+            meme.imagelink = resultSet.getString(4);
 
-            System.out.println("Row ["+memeCount+"]: " + meme[0] + ", " + meme[1] + ", " + meme[2] + ", " + meme[3]); 
-            result[memeCount] = meme;
-            memeCount++;
+            result[memeCount++] = meme;
+            System.out.println(meme.name + ", " + meme.type + ", " + meme.price + ", " + meme.imagelink);
          }
 
          // Renders jsp page

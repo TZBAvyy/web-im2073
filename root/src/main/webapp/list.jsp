@@ -1,5 +1,6 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ page contentType="text/html" pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <t:base>
 	<jsp:attribute name="head">
@@ -16,7 +17,18 @@
 
         <!-- Cat Moving Area -->
         <div class="catBox">
-            <t:catobjects/>
+            <c:forEach items="${result}" var="cat">
+                <div class='catObject'>
+                    <img 
+                        src="<c:out value="${cat.imagelink}"/>" 
+                        alt="<c:out value="${cat.name}"/>"
+                        style='width: 200px; height: auto;'
+                    >
+                    <p>
+                        <c:out value="${cat.name}"/> (<c:out value="${cat.price}"/>)
+                    </p>
+                </div>
+            </c:forEach>
         </div>
 	</jsp:body>
 </t:base>
