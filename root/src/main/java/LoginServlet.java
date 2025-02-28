@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
         System.out.println("Email: " + email);
         System.out.println("Password: " + password + "\n...");
 
-        final String sqlStatement = "select name, address, hashPassword, phoneNumber from customers where email=?";
+        final String sqlStatement = "select id, name, email, address, hashPassword, phoneNumber from customers where email=?";
         try (
             Connection conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/im2073_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
@@ -36,22 +36,24 @@ public class LoginServlet extends HttpServlet {
             stmt.setString(1, email);            
 
             ResultSet resultSet = stmt.executeQuery();
-            String[] accountInformation = new String[3];
             String password_DB = null;
+            User accountInformation = null;
             if (resultSet.next()) {
-                accountInformation[0] = resultSet.getString(1);   // Name
-                accountInformation[1] = resultSet.getString(2);   // Address
-                password_DB = resultSet.getString(3);             // Hashed PW
-                accountInformation[2] = resultSet.getInt(4)+"";   // Phone Number
+                accountInformation = new User(
+                    resultSet.getInt("id"),   
+                    resultSet.getString("name"),   
+                    resultSet.getString("email"),  
+                    resultSet.getString("address"),  
+                    resultSet.getInt("phoneNumber")       
+                );
+                password_DB = resultSet.getString("hashPassword");           
 
                 // DEBUG LINES
-                System.out.println("Found Account: " + accountInformation[0] + 
-                                ", " + accountInformation[1] + 
-                                ", " + accountInformation[2]); 
+                System.out.println("Found Account: " + accountInformation); 
                 System.out.println("Password in DB: " + password_DB + "\n...");
             }
 
-            if (accountInformation[0]==null) {
+            if (accountInformation==null) {
                 // CASE: Email not found in database 
                 System.out.println("No such account found.");
                 req.setAttribute("error", "No such account found.");

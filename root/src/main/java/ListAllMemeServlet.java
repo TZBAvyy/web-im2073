@@ -9,26 +9,6 @@ import jakarta.servlet.annotation.*;
 @WebServlet("/list")   // Configure the request URL for this servlet (Tomcat 7/Servlet 3.0 upwards)
 public class ListAllMemeServlet extends HttpServlet {
 
-   public class Meme {
-      String name;
-      String type;
-      double price;
-      String imagelink;
-
-      public String getImagelink() {
-          return imagelink;
-      }
-      public String getName() {
-          return name;
-      }
-      public double getPrice() {
-          return price;
-      }
-      public String getType() {
-          return type;
-      }
-   }
-
    // The doGet() runs once per HTTP GET request to this servlet.
    @Override
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -46,7 +26,7 @@ public class ListAllMemeServlet extends HttpServlet {
          // Step 3: Execute a SQL SELECT query
          // === Form the SQL command - BEGIN ===
          final String sqlStatement = """
-               select memes.name, memetypes.name, memes.price, memes.image_link from memes 
+               select memes.id, memes.name, memetypes.name, memes.price, memes.image_link from memes 
                inner join memetypes on memes.type_id = memetypes.id
                """;
          // === Form the SQL command - END ===
@@ -57,11 +37,13 @@ public class ListAllMemeServlet extends HttpServlet {
          Meme[] result = new Meme[100];  // Assume we have less than 100 memes
          int memeCount = 0;
          while(resultSet.next()) {
-            Meme meme = new Meme();
-            meme.name = resultSet.getString(1);
-            meme.type = resultSet.getString(2);
-            meme.price = resultSet.getDouble(3);
-            meme.imagelink = resultSet.getString(4);
+            Meme meme = new Meme(
+               resultSet.getInt("memes.id"),
+               resultSet.getString("memes.name"),
+               resultSet.getString("memetypes.name"),
+               resultSet.getDouble("memes.price"),
+               resultSet.getString("memes.image_link")
+            );
 
             result[memeCount++] = meme;
             System.out.println(meme.name + ", " + meme.type + ", " + meme.price + ", " + meme.imagelink);
