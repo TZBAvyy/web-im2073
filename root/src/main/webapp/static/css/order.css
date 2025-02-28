@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Russo One');
+
+#placeOrderWrapper {
+    display: flex;
+    flex-direction: row;
+    min-height: 60vh;
+
+    width: 95%;
+    background-color: #1a1a1a;
+    margin: 1% auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 15px #232323;
+    flex-wrap: wrap;
+}
+
+#leftCol {
+    flex: 1;
+    padding-right: 20px;
+    border-right: 1px solid #aeacac83;
+    margin-bottom: 20px;
+}
+
+#leftCol h3 {
+    margin-bottom: 15px;
+}
+
+/*Product card css*/
+#products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 0;
+    align-items: center;
+    gap: 10px;
+}
+
+.productcard {
+    width: 20%;
+    min-width: 200px;
+    height: auto;
+    padding: 10px 12px;
+    background-color: #1a1a1a;
+    border-radius: 15px;
+    border: 1px solid #9657f567;
+    box-shadow: 2px 2px 6px #272727;
+    margin: 0;
+    transition: 0.2s ease;
+    position: relative;
+}
+
+.qty {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 185px;
+    right: 15px;
+}
+
+.qty button {
+    background-color: #272727;
+    border: none;
+    width: 20px;
+    padding: 3px 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.qty input {
+    background-color: #272727;
+    width: 30px;
+    text-align: center;
+    border: 1px solid #232323;
+    font-size: 16px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.productcard img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.productcard .description{
+    text-align: start;
+    padding: 2px 0;
+}
+
+.productcard .description h2{
+    font-family: 'Merriweather';
+    color: #4c4eb0;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.productcard h4 {
+    font-family: 'Merriweather';
+    font-size: 14px;
+    color: #7084f5;
+    font-weight: bold;
+}
+
+.productcard .description p{
+    font-size: 15px;
+    padding-top: 3px;
+    overflow: hidden;
+}
+
+.productcard .name-price {
+    display: flex;
+    justify-content: space-between;
+}
+
+#rightCol {
+    width: 30%;
+    padding-left: 30px;
+    position: sticky;
+    top: 12vh;
+    right: 2vw;
+    max-height: 80vh;
+    overflow: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+#rightCol h3 {
+    margin-bottom: 10px;
+}
+
+.orderSummary {
+    background-color: #272727;
+    border-radius: 5px;
+    position: relative;
+    min-height: fit-content;
+    min-width: 23%;
+    padding: 15px;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    padding: 2px;
+}
+
+table th:nth-child(1) {
+    text-align: left;
+}
+
+table td:nth-child(2) {
+    text-align: center;
+}
+
+.placeOrder {
+    width: 100%;
+}
+
+.placeOrder button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3vh;
+    font-family: 'Lobster';
+    font-size: 14px;
+    padding: 8px 20px 8px;
+    color: #fcfbf6;
+    background-color: #1a1a1a;
+    border-radius: 20px;
+    box-shadow: 2px 2px 6px #232323;
+}
+
+@media (max-width: 768px) {
+    #placeOrderWrapper {
+        flex-direction: column;
+    }
+
+    #leftCol {
+        width: 100%;
+        padding-right: 0;
+        border: none;
+    }
+
+    #rightCol {
+        width: 100%;
+        position: static; 
+        top: 0;
+        padding-left: 0;
+    }
+
+    #products{
+        gap: 3vw;
+    }
+
+}
