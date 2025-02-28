@@ -1,6 +1,5 @@
 import java.io.*;
 import java.sql.*;
-import java.util.Arrays;
 
 import jakarta.servlet.*;            // Tomcat 10 (Jakarta EE 9)
 import jakarta.servlet.http.*;
@@ -12,49 +11,13 @@ public class ListAllMemeServlet extends HttpServlet {
    // The doGet() runs once per HTTP GET request to this servlet.
    @Override
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      final DBProperties dbProps = new DBProperties();
-
       System.out.println("\nGET Request to /list");
-      try (
-         // Step 1: Allocate a database 'Connection' object
-         Connection conn = DriverManager.getConnection(dbProps.url, dbProps.user, dbProps.password);   // For MySQL
-         // The format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
-
-         // Step 2: Allocate a 'Statement' object in the Connection
-         Statement stmt = conn.createStatement();
-      ) {
-         // Step 3: Execute a SQL SELECT query
-         // === Form the SQL command - BEGIN ===
-         final String sqlStatement = """
-               select memes.id, memes.name, memetypes.name, memes.price, memes.image_link from memes 
-               inner join memetypes on memes.type_id = memetypes.id
-               """;
-         // === Form the SQL command - END ===
-
-         ResultSet resultSet = stmt.executeQuery(sqlStatement);  // Send the query to the server
-
-         // Step 4: Process the query result set
-         Meme[] result = new Meme[100];  // Assume we have less than 100 memes
-         int memeCount = 0;
-         while(resultSet.next()) {
-            Meme meme = new Meme(
-               resultSet.getInt("memes.id"),
-               resultSet.getString("memes.name"),
-               resultSet.getString("memetypes.name"),
-               resultSet.getDouble("memes.price"),
-               resultSet.getString("memes.image_link")
-            );
-
-            result[memeCount++] = meme;
-            System.out.println(meme.name + ", " + meme.type + ", " + meme.price + ", " + meme.imagelink);
-         }
-
-         // Renders jsp page
-         request.setAttribute("result", Arrays.copyOfRange(result, 0, memeCount));
+      try {
+         final Meme[] memes = Meme.getMemes();
+         request.setAttribute("result", memes);
          request.getRequestDispatcher("/list.jsp").include(request, response);
-
-      } catch(SQLException ex) {
-         ex.printStackTrace();
-      }  // Step 5: Close conn and stmt - Done automatically by try-with-resources (JDK 7)
+      } catch (SQLException e) {
+         e.printStackTrace();
+      }
    }
 }
