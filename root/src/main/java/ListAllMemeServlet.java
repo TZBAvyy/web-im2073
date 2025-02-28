@@ -12,13 +12,13 @@ public class ListAllMemeServlet extends HttpServlet {
    // The doGet() runs once per HTTP GET request to this servlet.
    @Override
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      final DBProperties dbProps = new DBProperties();
+
       System.out.println("\nGET Request to /list");
       try (
          // Step 1: Allocate a database 'Connection' object
-         Connection conn = DriverManager.getConnection(
-               "jdbc:mysql://localhost:3306/im2073_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
-               "myuser", "xxxx");   // For MySQL
-               // The format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
+         Connection conn = DriverManager.getConnection(dbProps.url, dbProps.user, dbProps.password);   // For MySQL
+         // The format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
 
          // Step 2: Allocate a 'Statement' object in the Connection
          Statement stmt = conn.createStatement();

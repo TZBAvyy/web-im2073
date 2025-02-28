@@ -32,12 +32,11 @@ public class SignUpServlet extends HttpServlet{
         System.out.println("Email: " + email);
         System.out.println("Password: " + password + "\n...");
 
+        final DBProperties dbProps = new DBProperties();
         final String sqlSelectStatement = "select * from customers where email=?";
         final String sqlInsertStatement = "insert into customers (name, address, phoneNumber, email, hashPassword) values (?, ?, ?, ?, ?)";
         try (
-            Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/im2073_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
-                "myuser", "xxxx");
+            Connection conn = DriverManager.getConnection(dbProps.url, dbProps.user, dbProps.password);
             PreparedStatement selectStmt = conn.prepareStatement(sqlSelectStatement);
             PreparedStatement insertStmt = conn.prepareStatement(sqlInsertStatement);
         ) {
@@ -49,7 +48,7 @@ public class SignUpServlet extends HttpServlet{
                 req.setAttribute("error", "Email already exists.");
                 req.getRequestDispatcher("/signup.jsp").include(req, resp);
                 
-                System.out.println("Email found in database (Name: " + resultSet.getString(1) + ")\n");
+                System.out.println("Email found in database (Name: " + resultSet.getString("name") + ")\n");
 
             } else {
                 // INSERT INTO DB IF EMAIL IS UNIQUE

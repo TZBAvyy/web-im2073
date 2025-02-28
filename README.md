@@ -15,3 +15,7 @@ Web Mini-Project Repository for NTU IM2073: Intro to Design &amp; Project
 ### JSTL
 > https://www.tutorialspoint.com/jsp/jsp_standard_tag_library.htm
 > https://stackoverflow.com/questions/4928271/how-to-install-jstl-it-fails-with-the-absolute-uri-cannot-be-resolved-or-una
+
+### Properties file
+> https://stackoverflow.com/questions/2161054/where-to-place-and-how-to-read-configuration-resource-files-in-servlet-based-app
+> https://mkyong.com/java/java-properties-file-examples/

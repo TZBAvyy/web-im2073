@@ -26,11 +26,10 @@ public class LoginServlet extends HttpServlet {
         System.out.println("Email: " + email);
         System.out.println("Password: " + password + "\n...");
 
+        final DBProperties dbProps = new DBProperties();
         final String sqlStatement = "select id, name, email, address, hashPassword, phoneNumber from customers where email=?";
         try (
-            Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/im2073_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
-                "myuser", "xxxx");
+            Connection conn = DriverManager.getConnection(dbProps.url, dbProps.user, dbProps.password);
             PreparedStatement stmt = conn.prepareStatement(sqlStatement);
         ) {
             stmt.setString(1, email);            
