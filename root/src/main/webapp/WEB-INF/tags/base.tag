@@ -22,12 +22,6 @@
         <c:if test="${not empty accInfo}">
             <div><h2>Logged in as: ${accInfo.name}</h2></div>
         </c:if>
-        <%-- <%
-        User accInfo = (User)request.getSession().getAttribute("accInfo");
-        if (accInfo != null) {
-            out.println("<div><h2>Logged in as: " + accInfo.name + "</h2></div>");
-        }
-        %> --%>
 
         <div>
             <ul id="iconbar">
@@ -35,9 +29,6 @@
                 <li><a href="/list"><i class="fa-solid fa-box"></i></a></li>
                 <li><a href="/"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 <li>
-                    <%-- <a href=<% if (accInfo==null) out.println("/login"); else out.println("/logout"); %>>
-                        <i class="fa-solid fa-user"></i>
-                    </a> --%>
                     <a href="
                         <c:choose>
                             <c:when test="${empty accInfo}">/login</c:when>
