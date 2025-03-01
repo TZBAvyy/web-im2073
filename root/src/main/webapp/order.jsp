@@ -60,9 +60,13 @@
                         </tr>
                     </table>
 
-                    <div class="placeOrder">
+                    <form class="placeOrder" action="/order" method="post">
+                        <%-- 
+                        <input type="hidden"> for meme items and quantity will be dynamically updated here 
+                        --%>
+                        <input type="hidden" name="total_price" id="total_price" value="0">
                         <button type="submit">Place Order</button>
-                    </div>
+                    </form>
 
                 </div>
             </div>

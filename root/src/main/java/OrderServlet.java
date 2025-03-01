@@ -1,6 +1,7 @@
 import java.io.*;
 import java.sql.*;
-import java.util.Arrays;
+import java.util.Date;
+import java.util.Enumeration;
 
 import jakarta.servlet.*;            // Tomcat 10 (Jakarta EE 9)
 import jakarta.servlet.http.*;
@@ -22,34 +23,94 @@ public class OrderServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User accInfo = (User)req.getSession().getAttribute("accInfo");
+        System.out.println("\nPOST Request to /order");
+        final Date dateNow = new Date(); //Gets current datetime (this is java.util.Date class)
+        final Timestamp datetimeNow = new Timestamp(dateNow.getTime()); //This is java.sql.Timestamp class (used for SQL Datetime)
+        
+        Double total_price = 0.0;
+        int[] meme_qty_list = new int[100]; // List of int where index = meme_id and value = qty
 
+        System.out.println("Received Parameters in POST request:");
+        Enumeration<String> params = req.getParameterNames(); 
+        while(params.hasMoreElements()){
+
+            String paramName = params.nextElement();
+            System.out.println("Name - "+paramName+", Value - "+req.getParameter(paramName));
+
+            if (paramName.equals("total_price")) {
+                total_price = Double.parseDouble(req.getParameter(paramName));
+            } else if (paramName.contains("meme_")) {
+                // Splits param of name "meme_N", where N is the meme.id 
+                String[] parts = paramName.split("_");
+                int meme_id = Integer.parseInt(parts[1]);
+                meme_qty_list[meme_id] = Integer.parseInt(req.getParameter(paramName));
+            }
+        }
+
+        System.out.println("Parameter values retrieved and compiled");
+
+        final User accInfo = (User)req.getSession().getAttribute("accInfo");
         // TODO: Redirect deletes history, add order info in session => GET request retrieves order info from session
         if (accInfo==null) {
             resp.sendRedirect("/login");
             return;
         }
-
-        final int[] memes = Arrays.stream(req.getParameterValues("memes"))
-            .mapToInt(Integer::parseInt)
-            .toArray();
-        // final String[] memes = req.getParameterValues("memes");
+        System.out.println("Account Verified. Name: " + accInfo.name + ", Id: " + accInfo.id);
 
         final DBProperties dbProps = new DBProperties();
-        final String sqlStatement = """
+        final String sqlOrderStatement = """
                 insert into orders (customer_id, total_price, purchase_datetime) values (?, ?, ?)
-                """;;
+                """;
         try (
             Connection conn = DriverManager.getConnection(dbProps.url, dbProps.user, dbProps.password);
-            PreparedStatement stmt = conn.prepareStatement(sqlStatement);
+            PreparedStatement insertOrderStatement = conn.prepareStatement(sqlOrderStatement, PreparedStatement.RETURN_GENERATED_KEYS);
         ) {
-            for (int meme_id = 0; meme_id < memes.length; meme_id++) {
-                stmt.setInt(1, accInfo.id);
-                stmt.executeUpdate();
-                meme_id++;
+            insertOrderStatement.setInt(1, accInfo.id);
+            insertOrderStatement.setDouble(2, total_price);
+            insertOrderStatement.setTimestamp(3, datetimeNow);
+            insertOrderStatement.executeUpdate();
+
+            System.out.println("Order created: [CustomerID: "+accInfo.id+", TotalPrice: "+total_price+", Datetime: "+datetimeNow+"]");
+
+            ResultSet order_key = insertOrderStatement.getGeneratedKeys();
+            if (order_key.next()) {
+
+                int order_id = order_key.getInt(1);
+                if (order_id==0) return;
+
+                System.out.println("Order id retrieved (id: " + order_id + ")");
+
+                int meme_id = 0;
+                for (int qty : meme_qty_list) {
+                    if (qty!=0) {
+                        createOrderItem(meme_id, order_id, qty, conn);
+                    }
+                    meme_id++;
+                }
             }
+            
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+
+        System.out.println("POST End");
+        resp.sendRedirect("/");
+    }
+
+    private void createOrderItem(int meme_id, int order_id, int qty, Connection conn) {
+        final String sqlOrderItemStatement = """
+                insert into orderitem (order_id, meme_id, meme_qty) values (?, ?, ?)
+                """;
+        try (PreparedStatement insertOrderItemStatement = conn.prepareStatement(sqlOrderItemStatement)) {
+            insertOrderItemStatement.setInt(1, order_id);
+            insertOrderItemStatement.setInt(2, meme_id);
+            insertOrderItemStatement.setInt(3, qty);
+            insertOrderItemStatement.executeUpdate();
+            String line = "Order item created: [Order: %d, Meme: %d, Qty: %d]";
+            System.out.println(String.format(line, order_id, meme_id, qty));
+        } catch(SQLException e) {
+            e.printStackTrace();
+            return;
         }
     }
 }
