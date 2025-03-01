@@ -1,6 +1,29 @@
 # IM2073 Web Programming Mini-Project
 Web Mini-Project Repository for NTU IM2073: Intro to Design &amp; Project
 
+## Tech Stack
+
+### Project Management
+- Maven
+
+### Frontend
+- Java (Jakarta) Server Pages v4.0.0
+- JavaServer Pages Standard Tag Library v3.0.1
+- Base CSS & Javascript 
+
+### Backend
+- Jakarta Servlets v6.0.0
+- MySQL v8.4.4
+- MySQL-Connector-Java v9.2.0
+
+### HTTP Server
+- Tomcat v10
+
+## MySQL ERD Diagram
+> https://drawsql.app/teams/solo-196/diagrams/im2073
+
+![DrawSQL .png Diagram](im2073-drawsql-diagram.png)
+
 ## References
 
 ### Tags & .jsp templating
