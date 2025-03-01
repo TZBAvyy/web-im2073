@@ -1,10 +1,11 @@
 <%@ tag description="Overall Page template" pageEncoding="UTF-8" isELIgnored="false" %>
-<%@ attribute name="head" fragment="true" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ attribute name="head" fragment="true" %>
 
 <!DOCTYPE html>
 <html lang="en">
 <head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="static/css/general.css">
     <script src="https://kit.fontawesome.com/e617f52b14.js" crossorigin="anonymous"></script>
 
