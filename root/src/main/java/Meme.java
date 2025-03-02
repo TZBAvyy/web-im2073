@@ -65,4 +65,34 @@ public class Meme{
             return null;
         }
     }
+
+    public static Meme getMeme(int meme_id) {
+        final DBProperties dbProps = new DBProperties();
+        final String memeQuery = """
+                select memes.id, memes.name, memetypes.name, memes.price, memes.image_link
+                from memes join memetypes on memes.type_id=memetypes.id
+                where memes.id=?;
+                """;
+        try (
+            Connection conn = DriverManager.getConnection(dbProps.url, dbProps.user, dbProps.password);
+            PreparedStatement stmt = conn.prepareStatement(memeQuery);
+        ) {
+            stmt.setInt(1, meme_id);
+            ResultSet rs = stmt.executeQuery();
+            Meme meme = null;
+            if (rs.next()) {
+                meme = new Meme(
+                    rs.getInt("memes.id"),
+                    rs.getString("memes.name"),
+                    rs.getString("memetypes.name"),
+                    rs.getDouble("memes.price"),
+                    rs.getString("memes.image_link")
+                );
+            }
+            return meme;
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
 }
