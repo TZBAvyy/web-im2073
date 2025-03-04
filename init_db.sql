@@ -3,38 +3,33 @@ CREATE DATABASE `im2073_db`;
 
 USE `im2073_db`;
 
-CREATE TABLE `MemeTypes`(
-    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `name` VARCHAR(60) NOT NULL
-);
-
-CREATE TABLE `Customers`(
+CREATE TABLE `Users`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(60) NOT NULL,
-    `address` VARCHAR(255) NOT NULL,
-    `email` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(255) NOT NULL UNIQUE,
     `hashPassword` VARCHAR(255) NOT NULL,
-    `phoneNumber` BIGINT NOT NULL
+    `address` VARCHAR(255) NOT NULL,
+    `phoneNumber` VARCHAR(20) NOT NULL,
+    `isAdmin` TINYINT(1) NOT NULL DEFAULT 0
 );
 
 CREATE TABLE `Memes`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(60) NOT NULL,
-    `type_id` BIGINT UNSIGNED NOT NULL,
-    `price` FLOAT(53) NOT NULL,
+    `descrip` TEXT,
     `image_link` VARCHAR(255) NOT NULL,
-    FOREIGN KEY (`type_id`) REFERENCES `MemeTypes`(`id`)
+    `price` DECIMAL(10,2) NOT NULL
 );
 
 CREATE TABLE `Orders`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `customer_id` BIGINT UNSIGNED NOT NULL,
-    `total_price` FLOAT(53) NOT NULL,
-    `purchase_datetime` DATETIME NOT NULL,
-    FOREIGN KEY (`customer_id`) REFERENCES `Customers`(`id`)
+    `total_price` DECIMAL(10,2) NOT NULL,
+    `purchase_datetime` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (`customer_id`) REFERENCES `Users`(`id`)
 );
 
-CREATE TABLE `OrderItem`(
+CREATE TABLE `OrderItems`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `order_id` BIGINT UNSIGNED NOT NULL,
     `meme_id` BIGINT UNSIGNED NOT NULL,
