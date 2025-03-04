@@ -51,9 +51,9 @@ public class Order {
         final DBProperties dbProps = new DBProperties();
         final String sqlStatementOrder = """
                 select orders.id, orders.customer_id, orders.purchase_datetime,
-                group_concat(orderitem.meme_id, ":", orderitem.meme_qty) as memes, 
+                group_concat(orderitems.meme_id, ":", orderitems.meme_qty) as memes, 
                 orders.total_price
-                from orders join orderitem on orders.id=orderitem.order_id 
+                from orders join orderitems on orders.id=orderitems.order_id 
                 where orders.customer_id=?
                 group by orders.id;
                 """;

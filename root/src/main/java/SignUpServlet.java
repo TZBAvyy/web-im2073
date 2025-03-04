@@ -33,8 +33,8 @@ public class SignUpServlet extends HttpServlet{
         System.out.println("Password: " + password + "\n...");
 
         final DBProperties dbProps = new DBProperties();
-        final String sqlSelectStatement = "select * from customers where email=?";
-        final String sqlInsertStatement = "insert into customers (name, address, phoneNumber, email, hashPassword) values (?, ?, ?, ?, ?)";
+        final String sqlSelectStatement = "select * from users where email=?";
+        final String sqlInsertStatement = "insert into users (name, address, phoneNumber, email, hashPassword) values (?, ?, ?, ?, ?)";
         try (
             Connection conn = DriverManager.getConnection(dbProps.url, dbProps.user, dbProps.password);
             PreparedStatement selectStmt = conn.prepareStatement(sqlSelectStatement);

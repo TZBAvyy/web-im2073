@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
         System.out.println("Password: " + password + "\n...");
 
         final DBProperties dbProps = new DBProperties();
-        final String sqlStatement = "select id, name, email, address, hashPassword, phoneNumber from customers where email=?";
+        final String sqlStatement = "select id, name, email, address, hashPassword, phoneNumber from users where email=?";
         try (
             Connection conn = DriverManager.getConnection(dbProps.url, dbProps.user, dbProps.password);
             PreparedStatement stmt = conn.prepareStatement(sqlStatement);

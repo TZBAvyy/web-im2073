@@ -1,6 +1,5 @@
 import java.io.*;
 import java.sql.*;
-import java.util.Date;
 import java.util.Enumeration;
 
 import jakarta.servlet.*;            // Tomcat 10 (Jakarta EE 9)
@@ -24,9 +23,7 @@ public class OrderServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("\nPOST Request to /order");
-        final Date dateNow = new Date(); //Gets current datetime (this is java.util.Date class)
-        final Timestamp datetimeNow = new Timestamp(dateNow.getTime()); //This is java.sql.Timestamp class (used for SQL Datetime)
-        
+
         Double total_price = 0.0;
         int[] meme_qty_list = new int[100]; // List of int where index = meme_id and value = qty
 
@@ -59,7 +56,7 @@ public class OrderServlet extends HttpServlet{
 
         final DBProperties dbProps = new DBProperties();
         final String sqlOrderStatement = """
-                insert into orders (customer_id, total_price, purchase_datetime) values (?, ?, ?)
+                insert into orders (customer_id, total_price) values (?, ?)
                 """;
         try (
             Connection conn = DriverManager.getConnection(dbProps.url, dbProps.user, dbProps.password);
@@ -67,10 +64,9 @@ public class OrderServlet extends HttpServlet{
         ) {
             insertOrderStatement.setInt(1, accInfo.id);
             insertOrderStatement.setDouble(2, total_price);
-            insertOrderStatement.setTimestamp(3, datetimeNow);
             insertOrderStatement.executeUpdate();
 
-            System.out.println("Order created: [CustomerID: "+accInfo.id+", TotalPrice: "+total_price+", Datetime: "+datetimeNow+"]");
+            System.out.println("Order created: [UserID: "+accInfo.id+", TotalPrice: "+total_price+"]");
 
             ResultSet order_key = insertOrderStatement.getGeneratedKeys();
             if (order_key.next()) {
@@ -99,7 +95,7 @@ public class OrderServlet extends HttpServlet{
 
     private void createOrderItem(int meme_id, int order_id, int qty, Connection conn) {
         final String sqlOrderItemStatement = """
-                insert into orderitem (order_id, meme_id, meme_qty) values (?, ?, ?)
+                insert into orderitems (order_id, meme_id, meme_qty) values (?, ?, ?)
                 """;
         try (PreparedStatement insertOrderItemStatement = conn.prepareStatement(sqlOrderItemStatement)) {
             insertOrderItemStatement.setInt(1, order_id);
