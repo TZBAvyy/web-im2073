@@ -4,14 +4,14 @@ import java.util.Arrays;
 public class Meme{
     int id;
     String name;
-    String type;
+    String desc;
     double price;
     String imagelink;
 
-    public Meme(int id, String name, String type, double price, String imagelink) {
+    public Meme(int id, String name, String desc, double price, String imagelink) {
         this.id = id;
         this.name = name;
-        this.type = type;
+        this.desc = desc;
         this.price = price;
         this.imagelink = imagelink;
     }
@@ -28,8 +28,8 @@ public class Meme{
     public double getPrice() {
         return price;
     }
-    public String getType() {
-        return type;
+    public String getDesc() {
+        return desc;
     }
 
     // Static method to get all memes from the database
@@ -37,8 +37,7 @@ public class Meme{
     public static Meme[] getMemes() throws SQLException {
         final DBProperties dbProps = new DBProperties();
         final String sqlStatement = """
-                select memes.id, memes.name, memetypes.name, memes.price, memes.image_link from memes 
-                inner join memetypes on memes.type_id = memetypes.id
+                select memes.id, memes.name, memes.descrip, memes.price, memes.image_link from memes 
                 """;
         try(
             Connection conn = DriverManager.getConnection(dbProps.url, dbProps.user, dbProps.password);
@@ -52,12 +51,12 @@ public class Meme{
                 Meme meme = new Meme(
                     resultSet.getInt("memes.id"),
                     resultSet.getString("memes.name"),
-                    resultSet.getString("memetypes.name"),
+                    resultSet.getString("memes.descrip"),
                     resultSet.getDouble("memes.price"),
                     resultSet.getString("memes.image_link")
                 );
                 result[memeCount++] = meme;
-                System.out.println(meme.name + ", " + meme.type + ", " + meme.price + ", " + meme.imagelink);
+                System.out.println(meme.name + ", " + meme.desc + ", " + meme.price + ", " + meme.imagelink);
             }
             return Arrays.copyOf(result, memeCount);
         } catch(SQLException ex) {
@@ -69,8 +68,7 @@ public class Meme{
     public static Meme getMeme(int meme_id) {
         final DBProperties dbProps = new DBProperties();
         final String memeQuery = """
-                select memes.id, memes.name, memetypes.name, memes.price, memes.image_link
-                from memes join memetypes on memes.type_id=memetypes.id
+                select memes.id, memes.name, memes.descrip, memes.price, memes.image_link from memes
                 where memes.id=?;
                 """;
         try (
@@ -84,7 +82,7 @@ public class Meme{
                 meme = new Meme(
                     rs.getInt("memes.id"),
                     rs.getString("memes.name"),
-                    rs.getString("memetypes.name"),
+                    rs.getString("memes.descrip"),
                     rs.getDouble("memes.price"),
                     rs.getString("memes.image_link")
                 );

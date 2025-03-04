@@ -24,7 +24,13 @@
 
                         <c:otherwise>
                             <c:forEach var="meme" items="${memes}">
-                                <t:productCard id="${meme.id}" name="${meme.name}" imagelink="${meme.imagelink}" price="${meme.price}"/>
+                                <t:productCard 
+                                    id="${meme.id}" 
+                                    name="${meme.name}" 
+                                    imagelink="${meme.imagelink}" 
+                                    price="${meme.price}"
+                                    description="${meme.desc}"
+                                />
                             </c:forEach>
                         </c:otherwise>
                     </c:choose>

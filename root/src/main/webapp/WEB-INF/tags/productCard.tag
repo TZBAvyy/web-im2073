@@ -3,12 +3,13 @@
 <%@ attribute name="imagelink" required="true" %>
 <%@ attribute name="name" required="true" %>
 <%@ attribute name="price" required="true" %>
+<%@ attribute name="description" required="true" %>
 
 <div class="productcard"  
     data-productId="${id}"
     data-productImage="${imagelink}"
     data-productName="${name}"
-    data-description="Nil"
+    data-description="${description}"
     data-price="${price}"
 >
     <img src="${imagelink}" alt="${name}">
@@ -31,6 +32,6 @@
             </h4>
         </div>
         
-        <p>Nil (For now)</p>
+        <p>${description}</p>
     </div>
 </div>
