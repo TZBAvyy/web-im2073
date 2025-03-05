@@ -4,11 +4,11 @@ Web Mini-Project Repository for NTU IM2073: Intro to Design &amp; Project
 ## Tech Stack
 
 ### Project Management
-- Maven
+- Maven (WebApp Archetype)
 
 ### Frontend
 - Java (Jakarta) Server Pages v4.0.0
-- JavaServer Pages Standard Tag Library v3.0.1
+- JavaServer Pages Standard Tag Library v3.0.1 + API v3.0.2
 - Base CSS & Javascript 
 
 ### Backend
