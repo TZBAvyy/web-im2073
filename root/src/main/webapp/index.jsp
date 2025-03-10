@@ -9,27 +9,38 @@
     </jsp:attribute>
 
 	<jsp:body>
-		<div id="heroArea">
+		<!-- Home Page Hero Area -->
+        <section id="heroArea">
+            <div id="catModel">
+                <img src="../static/asset/catModel.png" alt="model" style="width: 37vw; height: auto;">
+            </div>
             <div id="ad">
-                <h2>the Purr-fect place <br> for Cat Meme Lovers</h2>
+                <h3>gimme your</h3>
+                <h2>MONEYYY</h2>
+                <a href="product.php"><button class="browse">BROWSE</button></a>
             </div>
-            <div id="trolley">
-                <img src="static/asset/trolley.png" alt="Trolley" style="width: 250px; height: auto; padding-top: 10px;">
-            </div>
-        </div>
+        </section>
 
-        <!-- Drag and Drop Marquee -->
-        <div class="marquee-container">
-            <div class="marquee">
-                DRAG AND DROP YOUR FAVOURITE CAT INTO THE SHOPPING CART &emsp; &emsp;
-                DRAG AND DROP YOUR FAVOURITE CAT INTO THE SHOPPING CART &emsp; &emsp; 
-                DRAG AND DROP YOUR FAVOURITE CAT INTO THE SHOPPING CART
+        <!-- best clubber -->
+        <section id="bestClubber">
+            <div id="word">
+                <h2>meet the &nbsp;</h2>
+                <span class="flip" style="--i:0" data-text="p">p</span>
+                <span class="flip" style="--i:1" data-text="u">u</span>
+                <span class="flip" style="--i:2" data-text="r">r</span>
+                <span class="flip" style="--i:3" data-text="r">r</span>
+                <span class="flip" style="--i:4" data-text="f">f</span>
+                <span class="flip" style="--i:5" data-text="e">e</span>
+                <span class="flip" style="--i:6" data-text="c">c</span>
+                <span class="flip" style="--i:7" data-text="t">t</span>
+                <h2>&nbsp; rockstar in our shop</h2>
             </div>
-        </div>
-
-        <!-- Cat Moving Area -->
-        <div class="catBox">
-            
-        </div>
+                
+            <div id="podium">
+                <img src="webapp/static/asset/happyCat.gif" alt="happyCat" style="width: 20vw; height: auto; position: absolute; left: 24.5vw; bottom: -74vh;">
+                <img src="webapp/static/asset/oiauiaCat.gif" alt="uiiaCat" style="width: 18vw; height: auto; position: absolute; left: 42vw; bottom: -62vh;">
+                <img src="webapp/static/asset/angryCat.png" alt="angryCat" style="width: 20vw; height: auto; position: absolute; right: 25vw; bottom: -77vh;">
+            </div>
+        </section>
 	</jsp:body>
 </t:base>

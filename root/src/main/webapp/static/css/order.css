@@ -14,6 +14,7 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: 10px 10px 15px #232323;
+    flex-wrap: wrap;
 }
 
 #leftCol {
@@ -44,7 +45,7 @@
     padding: 10px 12px;
     background-color: #1a1a1a;
     border-radius: 15px;
-    border: 1px solid #9657f567;
+    border: 1px solid #ffa366ce;
     box-shadow: 2px 2px 6px #272727;
     margin: 0;
     transition: 0.2s ease;
@@ -67,6 +68,7 @@
     cursor: pointer;
     font-size: 12px;
     font-weight: bold;
+    color: #1e0443;
 }
 
 .qty input {
@@ -92,7 +94,7 @@
 
 .productcard .description h2{
     font-family: 'Merriweather';
-    color: #4c4eb0;
+    color: #d8577eda;
     font-size: 16px;
     font-weight: 700;
 }
@@ -100,12 +102,12 @@
 .productcard h4 {
     font-family: 'Merriweather';
     font-size: 14px;
-    color: #7084f5;
+    color: #b8338ebe;
     font-weight: bold;
 }
 
 .productcard .description p{
-    font-size: 15px;
+    font-size: 14px;
     padding-top: 3px;
     overflow: hidden;
 }
@@ -144,6 +146,10 @@ table {
     width: 100%;
 }
 
+th {
+    color: #ffa366ce;
+}
+
 td {
     padding: 2px;
 }
@@ -174,7 +180,7 @@ table td:nth-child(2) {
     box-shadow: 2px 2px 6px #232323;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
     #placeOrderWrapper {
         flex-direction: column;
     }
