@@ -9,34 +9,35 @@
     </jsp:attribute>
 
 	<jsp:body>
-		<div id="heroArea">
-            <div id="ad">
-                <h2>Sign up</h2>
+		<div class="login-signup-container">
+            <div class="tab">
+                <a href="login.jsp"><h3>Login</h3></a>
+                <a href="signup.jsp"><h3>Sign Up</h3></a>
+            </div>
+            <div class="inner-form">
+                <form action="/signup" method="POST">
+                    <c:if test="${not empty error}">
+                        <h2 class='error'><c:out value="${error}"/></h2>
+                    </c:if>
+
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" value="" placeholder="Username" required>
+
+                    <label for="address">Address:</label>
+                    <input type="text" name="address" value="" placeholder="Address" required>
+
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="text" name="phoneNumber" value="" placeholder="Phone No." required>
+        
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="" placeholder="Email" required>
+                    
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" value="" placeholder="Password" required minlength=4>
+        
+                    <button type="submit">Sign Up</button>
+                </form>
             </div>
         </div>
-
-        <form action="/signup" method="post" class="form-container">
-            <c:if test="${not empty error}">
-                <h2 class='error'><c:out value="${error}"/></h2>
-            </c:if>
-            
-            <label for="name">Name:</label>
-            <input type="text" name="name" value="" required>
-
-            <label for="address">Address:</label>
-            <input type="text" name="address" value="" required>
-
-            <label for="phoneNumber">Phone Number:</label>
-            <input type="text" name="phoneNumber" value="" required>
-
-            <label for="email">Email:</label>
-            <input type="email" name="email" value="" required>
-
-            <label for="password">Password:</label>
-            <input type="password" name="password" value="" required minlength=4>
-
-            <input type="submit" value="Submit">
-            <a href="/">Cancel</a>
-        </form>
 	</jsp:body>
 </t:base>

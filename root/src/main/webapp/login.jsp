@@ -9,25 +9,27 @@
     </jsp:attribute>
 
 	<jsp:body>
-		<div id="heroArea">
-            <div id="ad">
-                <h2>Login</h2>
+		<div class="login-signup-container">
+            <div class="tab">
+                <a href="login.jsp"><h3>Login</h3></a>
+                <a href="signup.jsp"><h3>Sign Up</h3></a>
+            </div>
+            <div class="inner-form">
+                <form action="/login" method="POST">
+                    <c:if test="${not empty error}">
+                        <h2 class='error'><c:out value="${error}"/></h2>
+                    </c:if>
+
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" value="" placeholder="Username" required>
+        
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" value="" placeholder="Password" required>
+        
+                    <button type="submit">Login</button>
+                    <div class="signup-link">Not yet registered? <a href="/signup">Sign Up NOW</a></div>
+                </form>
             </div>
         </div>
-
-        <form action="/login" method="post" class="form-container">
-            <c:if test="${not empty error}">
-                <h2 class='error'><c:out value="${error}"/></h2>
-            </c:if>
-
-            <label for="email">Email:</label>
-            <input type="email" name="email" value="" required>
-
-            <label for="password">Password:</label>
-            <input type="password" name="password" value="" required minlength=4>
-
-            <input type="submit" value="Submit">
-            <a href="/signup">Sign up</a>
-        </form>
 	</jsp:body>
 </t:base>
