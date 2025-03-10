@@ -1,9 +1,164 @@
-.catBox {
-    background-image: url("../asset/petShopBackground.png");
-    width: 100%;
-    height: 750px;
-    padding: 10px;
-    margin-bottom: 20px;
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Russo One');
+
+#heroArea {
+    /* width: 100%; */
+    display: flex;
+    justify-content:flex-start;
+}
+
+#ad {
+    padding-top: 9%;
+    padding-left: 3%;
+}
+
+#heroArea h3 {
+    font-size: 5vw;
+    color: #fcfbf6;
+}
+
+#heroArea h2 {
+    font-family: Merriweather;
+    font-size: 9vw;
+    letter-spacing: 2px;
+    align-items: center;
+    background: linear-gradient(to right, #7a8691, #a46781, #cc5674, #ee5361, #fa6a5b, #ee5361, #cc5674, #a46781, #7a8691);
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animate-gradient 3.5s linear infinite;
+}
+
+@keyframes animate-gradient {
+    to {
+        background-position: 200%;
+    }
+}
+
+.browse {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 1px;
+    background: linear-gradient(45deg, #fa6a5b, #ee5361, #cc5674);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 15px #232323;
     position: relative;
     overflow: hidden;
+}
+
+.browse::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: width 0.4s ease-out, height 0.4s ease-out, top 0.4s ease-out, left 0.4s ease-out;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.browse:hover::before {
+    width: 0;
+    height: 0;
+}
+
+.browse:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.browse:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#disco {
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+#bestClubber {
+    margin: 0;
+}
+
+#word {
+    height: fit-content;
+    margin-top: 10vh;
+    margin-bottom: 9vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2vw;
+}
+
+#word h2 {
+    font-family: 'Lobster';
+    font-weight: 100;
+    font-size: 3.5vw;
+    letter-spacing: 2px;
+    color: #fcfbf6;
+}
+
+#word span {
+    font-family: 'Russo One';
+    text-transform: uppercase;
+    display: inline-flex;
+}
+
+#word .flip {
+    color: transparent;
+    -webkit-text-stroke: 0.2px;
+    background: linear-gradient(to bottom, #7a8691, #a46781, #cc5674, #ee5361, #fa6a5b);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 6vw;
+    font-weight: 900;
+    position: relative;
+    perspective: 200px;
+    line-height: 0.79;
+}
+
+#word .flip::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    color: transparent;
+    background: linear-gradient(to bottom, #7a8691, #a46781, #cc5674, #ee5361, #fa6a5b);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 1s ease calc(0.1s * var(--i));
+    transform-origin: left top;
+}
+
+#word:hover .flip::before {
+    transform: rotateX(250deg);
+    opacity: 0;
+}
+
+#podium {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85vw;
+    height: 80vh;
+    background-image: url("../asset/podium.gif");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }

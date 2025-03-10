@@ -17,7 +17,7 @@
     <%-- BASE HEADER COMPONENT --%>
     <header>
         <div id="logo">
-            <h1><a href="/">The Cat Meme Shop</a></h1>
+            <h1><a href="/index">The Cat Meme Shop</a></h1>
         </div>
 
         <c:if test="${not empty accInfo}">
@@ -26,9 +26,8 @@
 
         <div>
             <ul id="iconbar">
-                <li><a href="/"><i class="fa-regular fa-heart"></i></a></li>
-                <li><a href="/list"><i class="fa-solid fa-box"></i></a></li>
-                <li><a href="/order"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href="/orderDetails"><i class="fa-solid fa-box"></i></a></li>
+                <li><a href="/order"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
                 <li>
                     <a href="
                         <c:choose>
@@ -53,6 +52,7 @@
         <div class="marquee-container">
             <div class="marquee">
                 DEVELOPED BY AVISENA GIBRALTAR AND SEAW ZHI YI &emsp; &emsp;
+                DEVELOPED BY AVISENA GIBRALTAR AND SEAW ZHI YI &emsp; &emsp; 
                 DEVELOPED BY AVISENA GIBRALTAR AND SEAW ZHI YI &emsp; &emsp; 
                 DEVELOPED BY AVISENA GIBRALTAR AND SEAW ZHI YI
             </div>

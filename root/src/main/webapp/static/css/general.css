@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 
 /* general styling */
 :root {
-    --primary-color: #494949;
-    --background-color: #E0DDD6;
+    --primary-color: #fcfbf6;
+    --background-color: #1a1a1a;
     --hover-color: #7c482a;
 }
 
@@ -15,21 +16,21 @@
 }
 
 body {
-    font-family: 'Poppins';
+    font-family: 'Roboto';
     color: var(--primary-color);
-    background-color: #ffffff;
+    background-color: #1a1a1a;
     margin: 0;
     padding: 0;
 }
 
-h1, h2, h3 {
+h1 {
     font-family: 'Merriweather';
-    color: var(--primary-color);
+    color: #d8577eda;
 }
 
-h1 a {
-   text-decoration: none;
-   color: var(--primary-color); 
+h2, h3 {
+    font-family: 'Merriweather';
+    color: #a043a5b9;
 }
 
 /* header */
@@ -38,14 +39,22 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 10px 50px;
-    background-color: var(--background-color);
-    font-size: 80%;
+    background-color: #1a1a1a;
+    font-size: clamp(0.5rem, 1vw, 2rem);
     font-weight: bold;
-    box-shadow: 0 5px 15px rgba(0, 0,0 , 0.06);
+    box-shadow: 0 5px 15px #232323;
     z-index: 999;
     position: sticky;
     top: 0;
     left: 0;
+    height: 10vh;
+    overflow: hidden;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+#logo a{
+    text-decoration: none;
 }
 
 /* icon bar */
@@ -57,62 +66,48 @@ header {
 
 #iconbar li{
     list-style: none;
-    padding: 0 20px;
+    padding: 0 10px;
     position: relative;
 }
 
 #iconbar li a{
     text-decoration: none;
-    font-size: 16px;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
     font-weight: 600;
-    color: var(--primary-color);
+    color: #d24b73;
     transition: 0.3s ease;
 }
 
 #iconbar li a:hover,
 #iconbar li a.active {
-    color: var(--hover-color);
+    color: #ffa366;
     
 }
 
 /*underline for selected element*/
-#iconbar li a:hover::after,
-#iconbar li a.active::after {
+#iconbar li a.active::after,
+#iconbar li a:hover::after{
     content: "";
     left: 0;
-    width: 30%;
+    width: 1.3vw;
     height: 2px;
-    background-color: var(--hover-color);
+    background-color: #ffa366;
     position: absolute;
     bottom: -4px;
-    left: 20px;
+    left: 9.5px;
 }
 
 /* wrapper */
 #wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 60vh;
+    min-height: 78vh;
     width: 95%;
-    background-color: var(--background-color);
+    background-color: #1a1a1a;
     margin: 1% auto;
-    padding: 0 20px;
+    padding: 20px;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-#heroArea {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 50px;
-}
-
-#heroArea h2 {
-    font-family: Merriweather;
-    font-size: 62px;
-    color: var(--primary-color);
-    letter-spacing: 2px;
-    padding: 25px 0;
+    box-shadow: 10px 10px 15px #232323;
 }
 
 /* marquee styling */
@@ -124,7 +119,8 @@ header {
     margin-bottom: 15px;
     border-top: 2px solid;
     border-bottom: 2px solid;
-    height: 50px;
+    border-color: #d24b73;
+    height: 32px;
     padding: 5px;
 }
 
@@ -134,10 +130,10 @@ header {
     display: inline-block;
     animation: scrollLeft 15s linear infinite;
     font-family: 'Poppins';
-    color: var(--primary-color);
-    font-size: 24px;
+    color: #ffa366;
+    font-size: 14px;
     font-weight: bold;
-    letter-spacing: 1.5px;
+    letter-spacing: 5px;
     left: 5%;
 }
 
