@@ -1,10 +1,21 @@
-# IM2073 Web Programming Mini-Project
+# IM2073 Web Programming Mini-Project: The Cat Meme Shop
 Web Mini-Project Repository for NTU IM2073: Intro to Design &amp; Project
+
+## How to start up the WebApp
+*Assuming you already git cloned this repo into your local machine*
+
+### For First Time Install
+1. Make sure Java(v21), Maven(v3.9.9), MySQL(v8+) and Tomcat(v10) are installed!
+2. Create CATALINA_HOME system env variable pointing to Tomcat directory path
+3. Change directory to /root
+4. Run `mvn clean install` in the console
+5. Start up MySQL and Tomcat servers
+6. Server will be running on localhost!
 
 ## Tech Stack
 
 ### Project Management
-- Maven (WebApp Archetype)
+- Maven (WebApp Archetype) v3.9.9
 
 ### Frontend
 - Java (Jakarta) Server Pages v4.0.0
