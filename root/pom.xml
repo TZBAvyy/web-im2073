@@ -87,7 +87,7 @@
           <artifactId>maven-war-plugin</artifactId>
           <version>3.2.2</version>
           <configuration>
-            <outputDirectory>C:\repo\tomcat\webapps</outputDirectory>
+            <outputDirectory>${env.CATALINA_HOME}\webapps</outputDirectory>
           </configuration>
         </plugin>
         <plugin>
