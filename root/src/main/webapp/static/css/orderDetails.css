@@ -1,6 +1,7 @@
 .orders {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     gap: 10px;
     padding-top: 15px;
 }
@@ -16,7 +17,8 @@ p {
 }
 
 .orderContainer {
-    width:30%;
+    width: 30%;
+    min-width: 350px;
     text-align: center;
     padding: 15px;
     border: 1px solid var(--secondary-color);
@@ -67,6 +69,7 @@ p {
     font-size: 16px;
     text-align: right;
     margin-left: auto;
+    color: #fcfbf6;
 }
 
 .total {
