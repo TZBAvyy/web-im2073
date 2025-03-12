@@ -2,15 +2,25 @@
 Web Mini-Project Repository for NTU IM2073: Intro to Design &amp; Project
 
 ## How to start up the WebApp
-*Assuming you already git cloned this repo into your local machine*
+**Make sure Java(v21), Maven(v3.9.9), MySQL(v8+) and Tomcat(v10) are installed first!**
 
 ### For First Time Install
-1. Make sure Java(v21), Maven(v3.9.9), MySQL(v8+) and Tomcat(v10) are installed!
-2. Create CATALINA_HOME system env variable pointing to Tomcat directory path
-3. Change directory to /root
-4. Run `mvn clean install` in the console
-5. Start up MySQL and Tomcat servers
-6. Server will be running on localhost!
+*Assuming you already git cloned this repo into your local machine*  
+1. Set up a user account for MySQL with all permissions (Remember these account details!)
+
+2. Run init_db.sql and seed.sql to create tables and rows in MySQL
+
+3. Clone *database.properties-template* file, remove the *-template* and fill in the details with the account details information
+
+4. Create CATALINA_HOME system env variable pointing to Tomcat directory path
+
+5. Change directory to /root
+
+6. Run `mvn clean install` in the console
+
+7. Start up MySQL and Tomcat servers
+
+8. Server will be running on localhost!
 
 ## Tech Stack
 
