@@ -66,6 +66,7 @@ p {
     font-weight: bold;
     font-size: 16px;
     text-align: right;
+    margin-left: auto;
 }
 
 .total {

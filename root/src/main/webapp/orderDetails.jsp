@@ -9,39 +9,37 @@
     </jsp:attribute>
 
 	<jsp:body>
-        <div id="wrapper">
-            <h3><i class="fa-solid fa-list-check"></i>&nbsp; My Order</h3>
-            <div class="orders">
-                <c:choose>
-                    <c:when test="${not empty orders}">
-                        <c:forEach var="order" items="${orders}">
-                            <div class="orderContainer">
-                                <h3>Order ID: ${String.format("%04d", order.orderId)}</h3>
-                                <p>Order Date: ${order.orderDate}</p>
-                                <div class="orderItems">
-                                    <c:forEach var="item" items="${order.items}">
-                                        <div class="orderItem">
-                                            <div class="orderDetails">
-                                                <img src="${item.productImage}" alt="Product Image">
-                                                <div class="orderInfo">
-                                                    <h3>${item.productName}</h3>
-                                                    <p>${item.description}</p>
-                                                    <p>Quantity: ${item.quantity}</p>
-                                                </div>
-                                                <div class="orderPrice">$${String.format("%.2f", item.subTotal)}</div>
+        <h3><i class="fa-solid fa-list-check"></i>&nbsp; My Order</h3>
+        <div class="orders">
+            <c:choose>
+                <c:when test="${not empty orders}">
+                    <c:forEach var="order" items="${orders}">
+                        <div class="orderContainer">
+                            <h3>Order ID: ${String.format("%04d", order.id)}</h3>
+                            <p>Order Date: ${order.purchaseDatetime}</p>
+                            <div class="orderItems">
+                                <c:forEach var="item" items="${order.items}">
+                                    <div class="orderItem">
+                                        <div class="orderDetails">
+                                            <img src="${item.meme.imagelink}" alt="Product Image">
+                                            <div class="orderInfo">
+                                                <h3>${item.meme.name}</h3>
+                                                <p>${item.meme.desc}</p>
+                                                <p>Quantity: ${item.meme_qty}</p>
                                             </div>
+                                            <div class="orderPrice">$${String.format("%.2f", item.subtotal)}</div>
                                         </div>
-                                    </c:forEach>
-                                </div>
-                                <div class="total"><h3>Total: $${String.format("%.2f", order.totalPrice)}</h3></div>
+                                    </div>
+                                </c:forEach>
                             </div>
-                        </c:forEach>
-                    </c:when>
-                    <c:otherwise>
-                        <p>No orders found.</p>
-                    </c:otherwise>
-                </c:choose>
-            </div>
+                            <div class="total"><h3>Total: $${String.format("%.2f", order.total_price)}</h3></div>
+                        </div>
+                    </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    <p>No orders found.</p>
+                </c:otherwise>
+            </c:choose>
         </div>
 	</jsp:body>
 </t:base>
