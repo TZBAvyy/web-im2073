@@ -20,12 +20,12 @@
     justify-content: space-between;
     gap: 15px;
     margin-bottom: 10px;
-    border-bottom: 2px solid #ffa366ce;
+    border-bottom: 2px solid var(--secondary-color);
 }
 
 .tab a {
     text-decoration: none;
-    color: #ffa366ce;
+    color: var(--secondary-color);
     transition: color 0.3s;
     padding-bottom: 5px;
     position: relative;
@@ -38,7 +38,7 @@
     bottom: -2px; 
     width: 100%;
     height: 3px;
-    background-color: #ffa366ce;
+    background-color: var(--secondary-color);
     transform: scaleX(0);
     transition: transform 0.3s ease-in-out;
     transform-origin: bottom;
@@ -56,7 +56,7 @@
 }
 
 .tab a h3::after {
-    color: #d8577eda;
+    color: var(--primary-color);
 }
 
 .tab h3 {
@@ -87,7 +87,7 @@
 button {
     width: 100%;
     padding: 10px;
-    background-color: #d8577eda;
+    background-color: var(--primary-color);
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -106,7 +106,7 @@ button:hover {
 }
 
 .signup-link a {
-    color: #ffa366ce;
+    color: var(--secondary-color);
     text-decoration: none;
 }
 

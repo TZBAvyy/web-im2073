@@ -7,13 +7,12 @@
     display: flex;
     flex-direction: row;
     min-height: 60vh;
-
     width: 95%;
-    background-color: #1a1a1a;
+    background-color: var(--background-color);
     margin: 1% auto;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 10px 10px 15px #232323;
+    /* box-shadow: 10px 10px 15px #232323; */
     flex-wrap: wrap;
 }
 
@@ -43,9 +42,9 @@
     min-width: 200px;
     height: auto;
     padding: 10px 12px;
-    background-color: #1a1a1a;
+    background-color: var(--background-color);
     border-radius: 15px;
-    border: 1px solid #ffa366ce;
+    border: 1px solid var(--secondary-color);
     box-shadow: 2px 2px 6px #272727;
     margin: 0;
     transition: 0.2s ease;
@@ -94,7 +93,7 @@
 
 .productcard .description h2{
     font-family: 'Merriweather';
-    color: #d8577eda;
+    color: var(--main-text-color);
     font-size: 16px;
     font-weight: 700;
 }
@@ -102,7 +101,7 @@
 .productcard h4 {
     font-family: 'Merriweather';
     font-size: 14px;
-    color: #b8338ebe;
+    color: var(--secondary-text-color);
     font-weight: bold;
 }
 
@@ -147,7 +146,7 @@ table {
 }
 
 th {
-    color: #ffa366ce;
+    color: var(--secondary-color);
 }
 
 td {
@@ -175,7 +174,7 @@ table td:nth-child(2) {
     font-size: 14px;
     padding: 8px 20px 8px;
     color: #fcfbf6;
-    background-color: #1a1a1a;
+    background-color: var(--background-color);
     border-radius: 20px;
     box-shadow: 2px 2px 6px #232323;
 }
