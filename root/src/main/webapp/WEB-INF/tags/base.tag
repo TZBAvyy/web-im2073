@@ -17,7 +17,7 @@
     <%-- BASE HEADER COMPONENT --%>
     <header>
         <div class="logo">
-            <h1><a href="../../index.jsp">The Cat Meme Shop</a></h1>
+            <h1><a href="/">The Cat Meme Shop</a></h1>
         </div>
 
         <c:if test="${not empty accInfo}">

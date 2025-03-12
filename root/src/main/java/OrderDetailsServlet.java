@@ -1,5 +1,4 @@
 import java.io.*;
-import java.sql.*;
 
 import jakarta.servlet.*;            // Tomcat 10 (Jakarta EE 9)
 import jakarta.servlet.http.*;
@@ -9,7 +8,7 @@ import jakarta.servlet.annotation.*;
 public class OrderDetailsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("\nGET /orderDetails");
+        System.out.println("\nGET Request to /orderDetails");
         
         // get & check session from req
         HttpSession session = req.getSession(false);
@@ -30,8 +29,10 @@ public class OrderDetailsServlet extends HttpServlet {
             Order[] orders = Order.getOrdersFromCustomer(accInfo.id);
 
             if (orders == null || orders.length == 0) {
+                System.out.println("No orders found.");
                 req.setAttribute("error", "No orders found.");
             } else {
+                System.out.println("Orders retrieved.");
                 req.setAttribute("orders", orders);
             }
 
