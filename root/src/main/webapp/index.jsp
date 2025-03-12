@@ -12,12 +12,12 @@
 		<!-- Home Page Hero Area -->
         <section id="heroArea">
             <div id="catModel">
-                <img src="../static/asset/catModel.png" alt="model" style="width: 37vw; height: auto;">
+                <img src="static/asset/catModel.png" alt="model" style="width: 37vw; height: auto;">
             </div>
             <div id="ad">
                 <h3>gimme your</h3>
                 <h2>MONEYYY</h2>
-                <a href="product.php"><button class="browse">BROWSE</button></a>
+                <a href="/order"><button class="browse">BROWSE</button></a>
             </div>
         </section>
 
@@ -37,9 +37,9 @@
             </div>
                 
             <div id="podium">
-                <img src="webapp/static/asset/happyCat.gif" alt="happyCat" style="width: 20vw; height: auto; position: absolute; left: 24.5vw; bottom: -74vh;">
-                <img src="webapp/static/asset/oiauiaCat.gif" alt="uiiaCat" style="width: 18vw; height: auto; position: absolute; left: 42vw; bottom: -62vh;">
-                <img src="webapp/static/asset/angryCat.png" alt="angryCat" style="width: 20vw; height: auto; position: absolute; right: 25vw; bottom: -77vh;">
+                <img src="static/asset/happyCat.gif" alt="happyCat" style="width: 20vw; height: auto; position: absolute; left: 24.5vw; bottom: -74vh;">
+                <img src="static/asset/oiauiaCat.gif" alt="uiiaCat" style="width: 18vw; height: auto; position: absolute; left: 42vw; bottom: -62vh;">
+                <img src="static/asset/angryCat.png" alt="angryCat" style="width: 20vw; height: auto; position: absolute; right: 25vw; bottom: -77vh;">
             </div>
         </section>
 	</jsp:body>

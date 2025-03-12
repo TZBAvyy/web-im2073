@@ -53,8 +53,16 @@ header {
     text-align: center;
 }
 
-#logo a{
+.logo a {
     text-decoration: none;
+    color: #d8577eda;
+    font-size: clamp(1rem, 2vw, 2rem);
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.logo a:hover {
+    color: #ffa366;
 }
 
 /* icon bar */
