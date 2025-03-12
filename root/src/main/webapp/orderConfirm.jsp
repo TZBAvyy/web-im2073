@@ -5,13 +5,16 @@
 <t:base>
 	<jsp:attribute name="head">
 		<title>Order Success!</title>	
-		<link rel="stylesheet" href="static/css/home.css">
+		<link rel="stylesheet" href="static/css/loading.css">
     </jsp:attribute>
 
 	<jsp:body>
-		<!-- Home Page Hero Area -->
-        <section id="heroArea">
-            <h3>Order Received! Please wait a moment</h3>
-        </section>
+		<div class="loading">
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+		</div>
+        <h3>Order Received! Please wait a moment...</h3>
 	</jsp:body>
 </t:base>
