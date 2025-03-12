@@ -62,7 +62,16 @@ public class LoginServlet extends HttpServlet {
                 // CASE: Email and Password matches
                 System.out.println("Login successful.");
                 req.getSession().setAttribute("accInfo", accountInformation);
-                resp.sendRedirect("/");
+                // resp.sendRedirect("/");   
+                
+                // Check if a redirect URL exists
+                String redirectAfterLogin = (String) req.getSession().getAttribute("redirectAfterLogin");
+                if (redirectAfterLogin != null) {
+                    req.getSession().removeAttribute("redirectAfterLogin");
+                    resp.sendRedirect(redirectAfterLogin);
+                } else {
+                    resp.sendRedirect("/");
+                }
     
             } else {
                 // CASE: Email found, password does not match

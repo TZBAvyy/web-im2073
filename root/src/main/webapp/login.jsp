@@ -20,8 +20,8 @@
                         <h2 class='error'><c:out value="${error}"/></h2>
                     </c:if>
 
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" value="" placeholder="Username" required>
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" value="" placeholder="Email" required>
         
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" value="" placeholder="Password" required>

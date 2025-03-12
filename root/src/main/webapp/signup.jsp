@@ -21,7 +21,7 @@
                     </c:if>
 
                     <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" value="" placeholder="Username" required>
+                    <input type="text" id="name" name="name" value="" placeholder="Username" required>
 
                     <label for="address">Address:</label>
                     <input type="text" name="address" value="" placeholder="Address" required>
