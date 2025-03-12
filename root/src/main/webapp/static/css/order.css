@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Russo One');
 
-#placeOrderWrapper {
+#wrapper {
     display: flex;
     flex-direction: row;
     min-height: 60vh;
