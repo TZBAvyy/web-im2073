@@ -89,7 +89,7 @@ public class OrderServlet extends HttpServlet{
         }
 
         System.out.println("POST End");
-        resp.sendRedirect("/");
+        resp.sendRedirect("/order_confirm");
     }
 
     private void createOrderItem(int meme_id, int order_id, int qty, Connection conn) {

@@ -69,3 +69,7 @@ Web Mini-Project Repository for NTU IM2073: Intro to Design &amp; Project
 
 ### java.util.Date, java.sql.Date and java.sql.Timestamp (How to insert Datetime object to MySQL)
 > https://stackoverflow.com/questions/3323618/handling-mysql-datetimes-and-timestamps-in-java
+
+### Servlet redirect after delay (Refresh HTTP Header)
+> https://coderanch.com/t/357276/java/Servlet-Redirect-time-delay
+> https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Refresh
