@@ -24,7 +24,6 @@ CREATE TABLE `Memes`(
 CREATE TABLE `Orders`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `customer_id` BIGINT UNSIGNED NOT NULL,
-    `total_price` DECIMAL(10,2) NOT NULL,
     `purchase_datetime` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (`customer_id`) REFERENCES `Users`(`id`)
 );

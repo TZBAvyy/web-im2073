@@ -56,14 +56,13 @@ public class OrderServlet extends HttpServlet{
 
         final DBProperties dbProps = new DBProperties();
         final String sqlOrderStatement = """
-                insert into orders (customer_id, total_price) values (?, ?)
+                insert into orders (customer_id) values (?)
                 """;
         try (
             Connection conn = DriverManager.getConnection(dbProps.url, dbProps.user, dbProps.password);
             PreparedStatement insertOrderStatement = conn.prepareStatement(sqlOrderStatement, PreparedStatement.RETURN_GENERATED_KEYS);
         ) {
             insertOrderStatement.setInt(1, accInfo.id);
-            insertOrderStatement.setDouble(2, total_price);
             insertOrderStatement.executeUpdate();
 
             System.out.println("Order created: [UserID: "+accInfo.id+", TotalPrice: "+total_price+"]");

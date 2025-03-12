@@ -8,12 +8,15 @@ public class Order {
     Timestamp purchaseDatetime;
     OrderItem[] items;
 
-    public Order(int id, int customer_id, Timestamp purchaseDT,  double total_price, OrderItem[] items) {
+    public Order(int id, int customer_id, Timestamp purchaseDT,  OrderItem[] items) {
         this.id = id;
         this.customer_id = customer_id;
-        this.total_price = total_price;
         this.purchaseDatetime = purchaseDT;
         this.items = items;
+        this.total_price = 0.0;
+        for (OrderItem orderItem : items) {
+            this.total_price += orderItem.getSubtotal();
+        }
     }
 
     public int getId() {
@@ -51,20 +54,11 @@ public class Order {
         final DBProperties dbProps = new DBProperties();
         final String sqlStatementOrder = """
                 select orders.id, orders.customer_id, orders.purchase_datetime,
-                group_concat(orderitems.meme_id, ":", orderitems.meme_qty) as memes, 
-                orders.total_price
+                group_concat(orderitems.meme_id, ":", orderitems.meme_qty) as memes
                 from orders join orderitems on orders.id=orderitems.order_id 
                 where orders.customer_id=?
                 group by orders.id;
                 """;
-        // Resulting table looks like:
-        // +----+-------------+---------------------+-----------------+-------------+
-        // | id | customer_id | purchase_datetime   | memes           | total_price |
-        // +----+-------------+---------------------+-----------------+-------------+
-        // |  1 |           1 | 2025-02-11 11:23:44 | 1:3,3:5         |       41.92 |
-        // |  2 |           1 | 2025-03-01 14:24:43 | 1:3,2:1,3:2,8:3 |       53.94 |
-        // |  3 |           1 | 2025-03-01 14:27:03 | 1:5,4:3,7:1,8:1 |       54.65 |
-        // +----+-------------+---------------------+-----------------+-------------+
         try (
             Connection conn = DriverManager.getConnection(dbProps.url, dbProps.user, dbProps.password);
             PreparedStatement queryStmt = conn.prepareStatement(sqlStatementOrder);
@@ -79,7 +73,6 @@ public class Order {
                     resultSet.getInt("id"), 
                     resultSet.getInt("customer_id"), 
                     resultSet.getTimestamp("purchase_datetime"), 
-                    resultSet.getDouble("total_price"),
                     convertOrderItems(resultSet.getString("memes").split(","))
                     );
                 orders[count++] = order;

@@ -25,12 +25,12 @@ INSERT INTO `Memes` (`name`, `descrip`, `image_link`, `price`) VALUES
 ('UiiA UiiA', 'the legendary UiiA cat', 'static/asset/uiiaCat.png', 39.99),
 ('Wawa Cat', 'round and round...', 'static/asset/wawaCat.png', 5.99);
 
-INSERT INTO `Orders` (`customer_id`, `total_price`) VALUES
-(1, 43.97),  
-(2, 51.95),  
-(3, 68.99),
-(1, 51.95),
-(4, 41.92);
+INSERT INTO `Orders` (`customer_id`) VALUES
+(1),  
+(2),  
+(3),
+(1),
+(4);
 
 INSERT INTO `OrderItems` (`order_id`, `meme_id`, `meme_qty`) VALUES 
 (1, 1, 2),  
