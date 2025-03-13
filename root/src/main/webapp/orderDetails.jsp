@@ -13,9 +13,11 @@
         <div class="orders">
             <c:choose>
                 <c:when test="${not empty orders}">
+                    <c:set var="count" value="0" scope="page" />
                     <c:forEach var="order" items="${orders}">
+                        <c:set var="count" value="${count + 1}" scope="page"/>
                         <div class="orderContainer">
-                            <h3>Order ID: ${String.format("%04d", order.id)}</h3>
+                            <h3>Order No: ${String.format("%04d", count)}</h3>
                             <p>Order Date: ${order.purchaseDatetime}</p>
                             <div class="orderItems">
                                 <c:forEach var="item" items="${order.items}">
